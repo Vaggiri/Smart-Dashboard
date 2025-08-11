@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #2563EB; /* blue-600 */
+  --color-primary-50: #EFF6FF; /* blue-50 */
+  --color-primary-100: #DBEAFE; /* blue-100 */
+  --color-primary-500: #3B82F6; /* blue-500 */
+  --color-primary-600: #2563EB; /* blue-600 */
+  --color-primary-700: #1D4ED8; /* blue-700 */
+  
+  /* Secondary Colors */
+  --color-secondary: #64748B; /* slate-500 */
+  --color-secondary-100: #F1F5F9; /* slate-100 */
+  --color-secondary-200: #E2E8F0; /* slate-200 */
+  --color-secondary-300: #CBD5E1; /* slate-300 */
+  --color-secondary-400: #94A3B8; /* slate-400 */
+  --color-secondary-500: #64748B; /* slate-500 */
+  --color-secondary-600: #475569; /* slate-600 */
+  --color-secondary-700: #334155; /* slate-700 */
+  
+  /* Accent Colors */
+  --color-accent: #10B981; /* emerald-500 */
+  --color-accent-50: #ECFDF5; /* emerald-50 */
+  --color-accent-100: #D1FAE5; /* emerald-100 */
+  --color-accent-500: #10B981; /* emerald-500 */
+  --color-accent-600: #059669; /* emerald-600 */
+  
+  /* Background Colors */
+  --color-background: #FFFFFF; /* white */
+  --color-surface: #F8FAFC; /* slate-50 */
+  --color-surface-hover: #F1F5F9; /* slate-100 */
+  
+  /* Text Colors */
+  --color-text-primary: #0F172A; /* slate-900 */
+  --color-text-secondary: #64748B; /* slate-500 */
+  --color-text-muted: #94A3B8; /* slate-400 */
+  
+  /* Status Colors */
+  --color-success: #059669; /* emerald-600 */
+  --color-success-light: #10B981; /* emerald-500 */
+  --color-success-bg: #ECFDF5; /* emerald-50 */
+  
+  --color-warning: #D97706; /* amber-600 */
+  --color-warning-light: #F59E0B; /* amber-500 */
+  --color-warning-bg: #FFFBEB; /* amber-50 */
+  
+  --color-error: #DC2626; /* red-600 */
+  --color-error-light: #EF4444; /* red-500 */
+  --color-error-bg: #FEF2F2; /* red-50 */
+  
+  /* Shadow Variables */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* Border Variables */
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-radius-sm: 6px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Animation Variables */
+  --transition-fast: 150ms ease-out;
+  --transition-base: 200ms ease-out;
+  --transition-slow: 300ms ease-out;
+  --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #0F172A; /* slate-900 */
+    --color-surface: #1E293B; /* slate-800 */
+    --color-surface-hover: #334155; /* slate-700 */
+    --color-text-primary: #F8FAFC; /* slate-50 */
+    --color-text-secondary: #CBD5E1; /* slate-300 */
+    --color-text-muted: #94A3B8; /* slate-400 */
+    --border-light: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Base styles */
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  .font-data {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Component styles */
+@layer components {
+  .card {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-base);
+    transition: all var(--transition-base);
+  }
+  
+  .card:hover {
+    box-shadow: var(--shadow-md);
+    background-color: var(--color-surface-hover);
+  }
+  
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    transition: all var(--transition-base);
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--color-primary-700);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s infinite;
+  }
+  
+  .status-success {
+    background-color: var(--color-success);
+  }
+  
+  .status-warning {
+    background-color: var(--color-warning);
+  }
+  
+  .status-error {
+    background-color: var(--color-error);
+  }
+  
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip:hover .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-5px);
+    transition-delay: 150ms;
+  }
+  
+  .tooltip-content {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background-color: var(--color-text-primary);
+    color: var(--color-background);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+    z-index: 1000;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-bounce-spring {
+    animation: bounce 1s var(--spring-bounce);
+  }
+  
+  .transition-micro {
+    transition: all var(--transition-fast);
+  }
+  
+  .transition-smooth {
+    transition: all var(--transition-base);
+  }
+  
+  .transition-slow {
+    transition: all var(--transition-slow);
+  }
+}
+
+/* Keyframes */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
